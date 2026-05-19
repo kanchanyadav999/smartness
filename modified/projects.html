@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechVision — Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .soft-card {
+      background: linear-gradient(180deg, rgba(15,23,42,0.95), rgba(15,23,42,0.75));
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.35s ease;
+    }
+
+    .soft-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139,92,246,0.35);
+      box-shadow: 0 10px 30px rgba(139,92,246,0.12);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #ffffff, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .project-image {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: #0f172a;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .soft-card:hover .project-image img {
+      transform: scale(1.06);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(2,6,23,0.85), rgba(2,6,23,0.1));
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-pill {
+      transition: all 0.3s ease;
+    }
+
+    .nav-pill:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .nav-pill.active {
+      background: linear-gradient(to right, #7c3aed, #4f46e5);
+      color: white !important;
+      box-shadow: 0 10px 25px rgba(124,58,237,0.35);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139,92,246,0.16), transparent 70%);
+      top: -120px;
+      left: -100px;
+      z-index: 0;
+      pointer-events: none;
+      animation: pulseGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%,100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.12); opacity: 1; }
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(139,92,246,0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .premium-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    .search-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .search-box input {
+      background: transparent;
+      outline: none;
+      width: 100%;
+      color: white;
+    }
+
+    .search-box input::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+<!-- NAVBAR -->
+<nav style="display:flex;align-items:center;justify-content:space-between;padding:14px 56px;background:rgba(2,6,23,0.95);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06);backdrop-filter:blur(16px);">
+  <a href="index.html" style="display:flex;align-items:center;gap:8px;color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none;">
+    <div style="width:28px;height:28px;background:linear-gradient(135deg,#6c47ff,#a78bfa);clip-path:polygon(0% 0%,100% 50%,0% 100%,30% 50%);"></div>
+    TechVision
+  </a>
+  <div style="display:flex;gap:30px;list-style:none;align-items:center;">
+    <a href="index.html" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Home</a>
+    <a href="roadmap.html" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Roadmaps</a>
+    <a href="projects.html" style="color:#fff;text-decoration:none;font-size:0.85rem;border-bottom:2px solid #7c5cfc;padding-bottom:2px;">Projects</a>
+    <a href="placement.html" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Placement</a>
+    <a href="resources.html" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Resources</a>
+    <a href="about.html" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">About Us</a>
+    <a href="pricing.html" onclick="navClick(this)" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Pricing</a>
+    <a href="success-stories.html" onclick="navClick(this)" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Success Stories</a>
+    <a href="pricing.html" onclick="navClick(this)" style="color:#9999bb;text-decoration:none;font-size:0.85rem;">Contact</a>
+  </div>
+  <a href="contact.html" style="background:#5b3ef5;color:#fff;border:none;padding:9px 18px;border-radius:6px;font-size:0.82rem;font-weight:600;text-decoration:none;">Book Free Counselling</a>
+</nav>
+
+<!--
+  IMPORTANT:
+  Put these images in SAME folder as index.html
+
+  customer-churn.png
+  etl-pipeline-airflow.png
+  cicd-pipeline.png
+
+  Otherwise fallback images will load automatically.
+-->
+
+<section class="relative max-w-7xl mx-auto px-6 py-20 overflow-hidden">
+
+  <div class="hero-glow"></div>
+
+  <!-- TOP SECTION -->
+  <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-start mb-10">
+
+    <!-- LEFT -->
+    <div>
+
+      <div class="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 text-violet-300 px-4 py-2 rounded-full text-sm mb-6">
+        🚀 BUILD. PRACTICE. GET HIRED.
+      </div>
+
+      <h1 class="text-6xl font-black leading-tight mb-6">
+        Real-World <span class="gradient-text">Projects</span>
+      </h1>
+
+      <p class="text-xl text-slate-400 leading-relaxed max-w-2xl mb-10">
+        Build industry-level projects that strengthen your portfolio and help you stand out in interviews.
+      </p>
+
+      <!-- STATS -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+
+        <div class="soft-card rounded-3xl p-5">
+          <div class="w-12 h-12 rounded-2xl bg-violet-500/10 flex items-center justify-center text-2xl mb-4">📁</div>
+          <div class="text-4xl font-black mb-1">50+</div>
+          <div class="text-sm text-slate-400">Industry Projects</div>
+        </div>
+
+        <div class="soft-card rounded-3xl p-5">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-2xl mb-4">🎓</div>
+          <div class="text-4xl font-black mb-1">12+</div>
+          <div class="text-sm text-slate-400">Capstones</div>
+        </div>
+
+        <div class="soft-card rounded-3xl p-5">
+          <div class="w-12 h-12 rounded-2xl bg-green-500/10 flex items-center justify-center text-2xl mb-4">🗄️</div>
+          <div class="text-4xl font-black mb-1">20+</div>
+          <div class="text-sm text-slate-400">Datasets</div>
+        </div>
+
+        <div class="soft-card rounded-3xl p-5">
+          <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-2xl mb-4">☁️</div>
+          <div class="text-4xl font-black mb-1">15+</div>
+          <div class="text-sm text-slate-400">Deployments</div>
+        </div>
+
+        <div class="soft-card rounded-3xl p-5">
+          <div class="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center text-2xl mb-4">🎯</div>
+          <div class="text-4xl font-black mb-1">100%</div>
+          <div class="text-sm text-slate-400">Interview Focused</div>
+        </div>
+
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-gradient-to-r from-violet-600 to-indigo-500 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-violet-500/20 hover:scale-[1.03] transition-all duration-300">
+          Explore All Projects →
+        </button>
+
+        <button class="glass px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition-all duration-300">
+          How It Works
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="bg-white text-slate-900 rounded-[32px] p-10 shadow-2xl">
+
+      <h2 class="text-4xl font-black mb-4">Build. Learn. Deploy.</h2>
+
+      <p class="text-slate-600 text-lg mb-10">
+        Follow a structured path from learning to real-world impact.
+      </p>
+
+      <div class="grid grid-cols-4 gap-6 mb-10">
+
+        <div class="text-center">
+          <div class="w-20 h-20 rounded-full bg-violet-100 flex items-center justify-center text-3xl mx-auto mb-4">📄</div>
+          <h3 class="font-bold mb-2">Choose</h3>
+          <p class="text-sm text-slate-500">Pick a project</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center text-3xl mx-auto mb-4">💻</div>
+          <h3 class="font-bold mb-2">Learn</h3>
+          <p class="text-sm text-slate-500">Code with guidance</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 rounded-full bg-yellow-100 flex items-center justify-center text-3xl mx-auto mb-4">🧪</div>
+          <h3 class="font-bold mb-2">Improve</h3>
+          <p class="text-sm text-slate-500">Optimize & test</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center text-3xl mx-auto mb-4">🚀</div>
+          <h3 class="font-bold mb-2">Deploy</h3>
+          <p class="text-sm text-slate-500">Showcase portfolio</p>
+        </div>
+      </div>
+
+      <div class="bg-violet-50 rounded-2xl px-6 py-5 border border-violet-100 text-violet-700 font-medium text-lg">
+        ✨ Build projects recruiters care about and showcase real skills.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CATEGORY NAV -->
+  <div class="glass rounded-2xl p-3 flex flex-wrap gap-3 mb-10 sticky top-5 z-20">
+
+    <button onclick="filterProjects('all')" class="active px-6 py-3 rounded-xl font-semibold nav-pill">
+      All Projects
+    </button>
+
+    <button onclick="filterProjects('datascience')" class="nav-pill px-6 py-3 rounded-xl text-slate-300">Data Science</button>
+    <button onclick="filterProjects('analytics')" class="nav-pill px-6 py-3 rounded-xl text-slate-300">Data Analytics</button>
+    <button onclick="filterProjects('engineering')" class="nav-pill px-6 py-3 rounded-xl text-slate-300">Data Engineering</button>
+    <button onclick="filterProjects('machinelearning')" class="nav-pill px-6 py-3 rounded-xl text-slate-300">Machine Learning</button>
+    <button onclick="filterProjects('devops')" class="nav-pill px-6 py-3 rounded-xl text-slate-300">DevOps</button>
+    <button onclick="filterProjects('webdev')" class="nav-pill px-6 py-3 rounded-xl text-slate-300">Web Development</button>
+
+  </div>
+
+  <!-- SEARCH + FILTER -->
+
+<div class="search-box rounded-2xl px-5 py-4 flex items-center gap-4 mb-8">
+  <div class="text-2xl">🔍</div>
+  <input type="text" id="projectSearch" placeholder="Search projects, technologies, pipelines, dashboards..." onkeyup="searchProjects()">
+</div>
+
+<!-- PROJECT GRID -->
+  <div id="projectsGrid" class="grid lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+
+    <!-- DATA SCIENCE PROJECTS -->
+
+<div class="soft-card rounded-[28px] overflow-hidden project-card datascience">
+<div class="premium-badge">Trending</div>
+<div class="p-5 flex items-center justify-between">
+<span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm font-semibold">AI</span>
+<span class="text-yellow-400 font-semibold">⭐ 4.8</span>
+</div>
+<div class="px-5">
+<div class="project-image rounded-2xl h-44 mb-5">
+<img src="customer-churn.png">
+<div class="project-overlay"></div>
+</div>
+</div>
+<div class="p-5">
+<h3 class="text-2xl font-bold mb-3">Customer Churn Prediction</h3>
+<p class="text-slate-400 leading-relaxed mb-5">Predict customer retention using machine learning.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="tag px-3 py-1 rounded-lg text-sm">Python</span>
+<span class="tag px-3 py-1 rounded-lg text-sm">ML</span>
+</div>
+</div>
+</div>
+
+<div class="soft-card rounded-[28px] overflow-hidden project-card datascience"><div class="p-5"><h3 class="text-2xl font-bold mb-3">Loan Approval Prediction</h3><p class="text-slate-400">Build ML models for loan approval prediction.</p></div></div>
+<div class="soft-card rounded-[28px] overflow-hidden project-card datascience"><div class="p-5"><h3 class="text-2xl font-bold mb-3">Movie Recommendation System</h3><p class="text-slate-400">Recommendation engine using collaborative filtering.</p></div></div>
+<div class="soft-card rounded-[28px] overflow-hidden project-card datascience"><div class="p-5"><h3 class="text-2xl font-bold mb-3">Stock Price Prediction</h3><p class="text-slate-400">Forecast stock trends using LSTM models.</p></div></div>
+<div class="soft-card rounded-[28px] overflow-hidden project-card datascience"><div class="p-5"><h3 class="text-2xl font-bold mb-3">AI Chatbot using NLP</h3><p class="text-slate-400">Conversational chatbot using NLP pipeline.</p></div></div>
+
+<!-- DATA ANALYTICS -->
+<div class="soft-card rounded-[28px] overflow-hidden project-card analytics">
+    <div class="soft-card rounded-[28px] overflow-hidden">
+
+      <div class="p-5 flex items-center justify-between">
+        <span class="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">Featured</span>
+        <span class="text-yellow-400 font-semibold">⭐ 4.8</span>
+      </div>
+
+      <div class="px-5">
+        <div class="project-image rounded-2xl h-44 mb-5">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Sales Analytics Dashboard">
+          <div class="project-overlay"></div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <h3 class="text-2xl font-bold mb-3">Sales Analytics Dashboard</h3>
+
+        <p class="text-slate-400 leading-relaxed mb-5">
+          Analyze sales data and build interactive dashboards with KPIs.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag px-3 py-1 rounded-lg text-sm">Power BI</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">Excel</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">SQL</span>
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-5">
+          <span>Intermediate</span>
+          <span>4–6 Hours</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="soft-card rounded-[28px] overflow-hidden">
+
+      <div class="p-5 flex items-center justify-between">
+        <span class="bg-violet-500/10 text-violet-400 px-3 py-1 rounded-full text-sm font-semibold">Popular</span>
+        <span class="text-yellow-400 font-semibold">⭐ 4.9</span>
+      </div>
+
+      <div class="px-5">
+        <div class="project-image rounded-2xl h-44 mb-5">
+          <img src="customer-churn.png" alt="E-Commerce Analytics" onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop'">
+          <div class="project-overlay"></div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <h3 class="text-2xl font-bold mb-3">E-Commerce Analysis</h3>
+
+        <p class="text-slate-400 leading-relaxed mb-5">
+          Explore customer behavior and trends using SQL & Python.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag px-3 py-1 rounded-lg text-sm">Python</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">SQL</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">Pandas</span>
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-5">
+          <span>Intermediate</span>
+          <span>5–7 Hours</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="soft-card rounded-[28px] overflow-hidden">
+
+      <div class="p-5 flex items-center justify-between">
+        <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm font-semibold">New</span>
+        <span class="text-yellow-400 font-semibold">⭐ 4.7</span>
+      </div>
+
+      <div class="px-5">
+        <div class="project-image rounded-2xl h-44 mb-5">
+          <img src="customer-churn.png" alt="Machine Learning Project" onerror="this.src='https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop'">
+          <div class="project-overlay"></div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <h3 class="text-2xl font-bold mb-3">Customer Churn Prediction</h3>
+
+        <p class="text-slate-400 leading-relaxed mb-5">
+          Predict customer churn using machine learning algorithms.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag px-3 py-1 rounded-lg text-sm">Python</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">Scikit-learn</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">Streamlit</span>
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-5">
+          <span>Advanced</span>
+          <span>6–8 Hours</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="soft-card rounded-[28px] overflow-hidden">
+
+      <div class="p-5 flex items-center justify-between">
+        <span class="bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm font-semibold">Pipeline</span>
+        <span class="text-yellow-400 font-semibold">⭐ 4.8</span>
+      </div>
+
+      <div class="px-5">
+        <div class="project-image rounded-2xl h-44 mb-5">
+          <img src="etl-pipeline-airflow.png" alt="ETL Pipeline Project" onerror="this.src='https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1200&auto=format&fit=crop'">
+          <div class="project-overlay"></div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <h3 class="text-2xl font-bold mb-3">ETL Pipeline with Airflow</h3>
+
+        <p class="text-slate-400 leading-relaxed mb-5">
+          Build production-grade ETL pipelines using Airflow & AWS.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag px-3 py-1 rounded-lg text-sm">Airflow</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">AWS</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">PostgreSQL</span>
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-5">
+          <span>Advanced</span>
+          <span>8–10 Hours</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="soft-card rounded-[28px] overflow-hidden">
+
+      <div class="p-5 flex items-center justify-between">
+        <span class="bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm font-semibold">DevOps</span>
+        <span class="text-yellow-400 font-semibold">⭐ 4.9</span>
+      </div>
+
+      <div class="px-5">
+        <div class="project-image rounded-2xl h-44 mb-5">
+          <img src="cicd-pipeline.png" alt="DevOps CI CD Pipeline" onerror="this.src='https://images.unsplash.com/photo-1667372393086-9d4001d51cf1?q=80&w=1200&auto=format&fit=crop'">
+          <div class="project-overlay"></div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <h3 class="text-2xl font-bold mb-3">CI/CD Pipeline</h3>
+
+        <p class="text-slate-400 leading-relaxed mb-5">
+          Automate build, test & deployment using Jenkins and Docker.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag px-3 py-1 rounded-lg text-sm">Docker</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">Jenkins</span>
+          <span class="tag px-3 py-1 rounded-lg text-sm">Kubernetes</span>
+        </div>
+
+        <div class="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-5">
+          <span>Advanced</span>
+          <span>6–8 Hours</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM FEATURES -->
+  <div class="bg-white rounded-[32px] px-10 py-8 grid md:grid-cols-5 gap-8 text-slate-900 shadow-2xl">
+
+    <div>
+      <div class="text-4xl mb-4">🎯</div>
+      <h3 class="font-bold text-xl mb-2">Job-Ready Portfolio</h3>
+      <p class="text-slate-600 leading-relaxed">
+        Build a portfolio that impresses recruiters.
+      </p>
+    </div>
+
+    <div>
+      <div class="text-4xl mb-4">💻</div>
+      <h3 class="font-bold text-xl mb-2">Hands-on Learning</h3>
+      <p class="text-slate-600 leading-relaxed">
+        Learn by building real projects from scratch.
+      </p>
+    </div>
+
+    <div>
+      <div class="text-4xl mb-4">👨‍🏫</div>
+      <h3 class="font-bold text-xl mb-2">Mentor Support</h3>
+      <p class="text-slate-600 leading-relaxed">
+        Get guidance and code reviews from experts.
+      </p>
+    </div>
+
+    <div>
+      <div class="text-4xl mb-4">📜</div>
+      <h3 class="font-bold text-xl mb-2">Certificates</h3>
+      <p class="text-slate-600 leading-relaxed">
+        Earn completion certificates for your resume.
+      </p>
+    </div>
+
+    <div>
+      <div class="text-4xl mb-4">🚀</div>
+      <h3 class="font-bold text-xl mb-2">Interview Focused</h3>
+      <p class="text-slate-600 leading-relaxed">
+        Projects designed to make you placement ready.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+function searchProjects() {
+  const input = document.getElementById('projectSearch').value.toLowerCase();
+  const cards = document.querySelectorAll('.project-card');
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    if(text.includes(input)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function filterProjects(category) {
+  const buttons = document.querySelectorAll('.nav-pill');
+
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  const activeButton = event.target;
+  activeButton.classList.add('active');
+  const cards = document.querySelectorAll('.project-card');
+
+  cards.forEach(card => {
+    if(category === 'all') {
+      card.style.display = 'block';
+    } else {
+      if(card.classList.contains(category)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+}
+
+const projects = [
+  {title:'Sales Analytics Dashboard', category:'analytics'},
+  {title:'HR Analytics Dashboard', category:'analytics'},
+  {title:'E-Commerce Analytics', category:'analytics'},
+  {title:'Financial KPI Dashboard', category:'analytics'},
+  {title:'Marketing Campaign Analysis', category:'analytics'},
+
+  {title:'ETL Pipeline with Airflow', category:'engineering'},
+  {title:'Kafka Streaming Pipeline', category:'engineering'},
+  {title:'AWS Data Lake Project', category:'engineering'},
+  {title:'Spark Data Processing', category:'engineering'},
+  {title:'Data Warehouse Project', category:'engineering'},
+
+  {title:'CI/CD Pipeline', category:'devops'},
+  {title:'Dockerized Flask App', category:'devops'},
+  {title:'Kubernetes Deployment', category:'devops'},
+  {title:'Terraform Automation', category:'devops'},
+  {title:'Monitoring with Grafana', category:'devops'},
+
+  {title:'ATS Resume Builder', category:'datascience'},
+  {title:'AI Career Assistant', category:'datascience'},
+  {title:'Fraud Detection System', category:'datascience'},
+  {title:'Resume Screening NLP', category:'datascience'},
+  {title:'Sentiment Analysis', category:'datascience'},
+
+  {title:'Customer Segmentation ML', category:'machinelearning'},
+  {title:'Deep Learning Image Classifier', category:'machinelearning'},
+  {title:'Recommendation Engine', category:'machinelearning'},
+  {title:'AI Face Recognition System', category:'machinelearning'},
+  {title:'Neural Network Predictor', category:'machinelearning'},
+
+  {title:'Portfolio Website', category:'webdev'},
+  {title:'AI SaaS Landing Page', category:'webdev'},
+  {title:'Netflix Clone', category:'webdev'},
+  {title:'E-Learning Platform', category:'webdev'},
+  {title:'Admin Dashboard UI', category:'webdev'}
+];
+
+const grid = document.getElementById('projectsGrid');
+
+projects.forEach(project => {
+  const card = document.createElement('div');
+  card.className = `soft-card rounded-[28px] overflow-hidden project-card ${project.category}`;
+
+  card.innerHTML = `
+    <div class="p-5">
+      <div class="project-image rounded-2xl h-44 mb-5">
+        <img loading="lazy" src="customer-churn.png" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop'">
+        <div class="project-overlay"></div>
+      </div>
+
+      <h3 class="text-2xl font-bold mb-3">${project.title}</h3>
+
+      <p class="text-slate-400 leading-relaxed mb-5">
+        Real-world industry level project for portfolio building.
+      </p>
+
+      <div class="flex items-center justify-between text-sm text-slate-400 border-t border-white/5 pt-5">
+        <span>Intermediate</span>
+        <span>6–8 Hours</span>
+      </div>
+    </div>
+  `;
+
+  grid.appendChild(card);
+});
+</script>
+
+
+</body>
+</html>
