@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechVision — Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --purple: #7C3AED; --dark: #0D0D1A; --dark2: #111128; --dark3: #13132A;
+    --card-border: #1E1E4A; --text: #E2E8F0; --text-muted: #94A3B8; --accent: #A78BFA;
+    --green: #10B981; --blue: #3B82F6; --orange: #F59E0B; --pink: #EC4899;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: #0A0A1A; border-bottom: 1px solid #1a1a3e; position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon { width: 38px; height: 38px; background: var(--purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: white; }
+  .logo-text strong { display: block; font-size: 16px; font-weight: 800; color: white; }
+  .logo-text span { font-size: 11px; color: var(--text-muted); }
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: white; }
+  .btn-nav { background: var(--purple); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+
+  .hero { padding: 80px 60px; text-align: center; background: radial-gradient(ellipse at 50% 30%, #1a0a3e 0%, transparent 60%), var(--dark); }
+  .hero h1 { font-size: 48px; font-weight: 900; color: white; margin-bottom: 16px; }
+  .hero h1 .hl { color: var(--accent); }
+  .hero p { font-size: 16px; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  .section { padding: 60px; }
+  .section h2 { font-size: 28px; font-weight: 800; color: white; text-align: center; margin-bottom: 12px; }
+  .section h2 .hl { color: var(--accent); }
+  .section .sub { text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 40px; }
+
+  .resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .resource-card {
+    background: var(--dark3); border: 1px solid var(--card-border); border-radius: 16px; padding: 28px;
+    transition: all .25s; cursor: pointer;
+  }
+  .resource-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .resource-card .ico { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+  .ico-purple { background: rgba(124,58,237,0.15); }
+  .ico-blue { background: rgba(59,130,246,0.15); }
+  .ico-green { background: rgba(16,185,129,0.15); }
+  .ico-orange { background: rgba(245,158,11,0.15); }
+  .ico-pink { background: rgba(236,72,153,0.15); }
+  .resource-card h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+  .resource-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+  .resource-card .link { font-size: 12px; color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 4px; }
+
+  .tools-section { background: var(--dark2); padding: 60px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tool-card {
+    background: var(--dark3); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px; text-align: center;
+    transition: all .2s;
+  }
+  .tool-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+  .tool-card .t-icon { font-size: 28px; margin-bottom: 10px; }
+  .tool-card h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .tool-card p { font-size: 11px; color: var(--text-muted); }
+
+  .faq-section { padding: 60px; }
+  .faq-item { background: var(--dark3); border: 1px solid var(--card-border); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; cursor: pointer; transition: all .2s; }
+  .faq-item:hover { border-color: rgba(124,58,237,0.3); }
+  .faq-item h4 { font-size: 15px; font-weight: 700; color: white; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item h4 .arrow { color: var(--accent); font-size: 18px; transition: transform .2s; }
+  .faq-item p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 12px; display: none; }
+  .faq-item.open p { display: block; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+
+  footer { background: #06060F; padding: 20px 60px; text-align: center; font-size: 12px; color: var(--text-muted); border-top: 1px solid #1a1a3e; }
+  @media (max-width: 900px) { .resource-grid { grid-template-columns: 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><div class="logo-icon">T</div><div class="logo-text"><strong>TechVision</strong><span>Learn. Build. Grow.</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="roadmap.html">Courses</a>
+    <a href="projects.html">Projects</a>
+    <a href="placement.html">Placement</a>
+    <a href="resources.html" class="active">Resources</a>
+    <a href="about.html">About Us</a>
+  </div>
+  <a href="contact.html" class="btn-nav">Book Free Counselling</a>
+</nav>
+
+<div class="hero">
+  <h1>Free <span class="hl">Resources</span></h1>
+  <p>Cheat sheets, guides, templates, and tools to accelerate your learning journey — all free, forever.</p>
+</div>
+
+<div class="section">
+  <h2>Learning <span class="hl">Materials</span></h2>
+  <p class="sub">Curated resources for every stage of your tech journey</p>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="ico ico-purple">📄</div><h3>Python Cheat Sheet</h3><p>Complete Python syntax, data structures, and common patterns in one printable sheet.</p><div class="link">Download PDF <i class="fas fa-arrow-right"></i></div></div>
+    <div class="resource-card"><div class="ico ico-blue">📄</div><h3>SQL Interview Questions</h3><p>Top 50 SQL questions asked at Amazon, Google, Flipkart with detailed solutions.</p><div class="link">Download PDF <i class="fas fa-arrow-right"></i></div></div>
+    <div class="resource-card"><div class="ico ico-green">📄</div><h3>Data Science Roadmap PDF</h3><p>Step-by-step roadmap from complete beginner to job-ready Data Scientist.</p><div class="link">Download PDF <i class="fas fa-arrow-right"></i></div></div>
+    <div class="resource-card"><div class="ico ico-orange">📊</div><h3>Power BI Templates</h3><p>5 ready-to-use Power BI dashboard templates for practice and portfolio building.</p><div class="link">Download Templates <i class="fas fa-arrow-right"></i></div></div>
+    <div class="resource-card"><div class="ico ico-pink">📝</div><h3>Resume Templates</h3><p>ATS-friendly resume templates for Data Analyst, Data Scientist, and DevOps roles.</p><div class="link">Download Templates <i class="fas fa-arrow-right"></i></div></div>
+    <div class="resource-card"><div class="ico ico-purple">🎥</div><h3>Free YouTube Tutorials</h3><p>Curated playlist of our best free tutorials on Python, SQL, Power BI, and more.</p><div class="link">Watch Now <i class="fas fa-arrow-right"></i></div></div>
+  </div>
+</div>
+
+<div class="tools-section">
+  <h2 style="font-size:28px;font-weight:800;color:white;text-align:center;margin-bottom:12px;">Tools We <span style="color:var(--accent)">Use & Teach</span></h2>
+  <p style="text-align:center;color:var(--text-muted);font-size:14px;margin-bottom:36px;">Industry-standard tools you'll master during the course</p>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="t-icon">🐍</div><h4>Python</h4><p>Core programming</p></div>
+    <div class="tool-card"><div class="t-icon">🗃️</div><h4>SQL</h4><p>Data querying</p></div>
+    <div class="tool-card"><div class="t-icon">📊</div><h4>Power BI</h4><p>Visualization</p></div>
+    <div class="tool-card"><div class="t-icon">📈</div><h4>Tableau</h4><p>Dashboards</p></div>
+    <div class="tool-card"><div class="t-icon">🤖</div><h4>TensorFlow</h4><p>Deep Learning</p></div>
+    <div class="tool-card"><div class="t-icon">☁️</div><h4>AWS</h4><p>Cloud services</p></div>
+    <div class="tool-card"><div class="t-icon">🐳</div><h4>Docker</h4><p>Containers</p></div>
+    <div class="tool-card"><div class="t-icon">⚙️</div><h4>Kubernetes</h4><p>Orchestration</p></div>
+  </div>
+</div>
+
+<div class="faq-section">
+  <h2 style="font-size:28px;font-weight:800;color:white;text-align:center;margin-bottom:12px;">Frequently <span style="color:var(--accent)">Asked Questions</span></h2>
+  <p style="text-align:center;color:var(--text-muted);font-size:14px;margin-bottom:36px;">Common questions from our learners</p>
+
+  <div class="faq-item" onclick="this.classList.toggle('open')"><h4>Do I need a tech background to join? <span class="arrow">▾</span></h4><p>Not at all! Our courses start from absolute basics. Many of our successful students come from non-tech backgrounds like commerce, arts, and science.</p></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><h4>How long are the courses? <span class="arrow">▾</span></h4><p>Courses range from 4 to 9 months depending on the path. Data Analytics is 4-6 months, Data Science is 6-9 months, and DevOps is 5-7 months.</p></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><h4>Are the classes live or recorded? <span class="arrow">▾</span></h4><p>All classes are live with industry experts. You also get lifetime access to recordings so you can revise anytime.</p></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><h4>What if I miss a class? <span class="arrow">▾</span></h4><p>No worries — all sessions are recorded. You can watch the recording and ask doubts in the next live session or through our community support.</p></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><h4>Is there a refund policy? <span class="arrow">▾</span></h4><p>Yes, we offer a 7-day no-questions-asked refund policy if you're not satisfied with the course.</p></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><h4>Do you provide certificates? <span class="arrow">▾</span></h4><p>Yes! You receive a verified completion certificate that you can share on LinkedIn and add to your resume.</p></div>
+</div>
+
+<footer><p>© 2026 TechVision. All rights reserved. | Learn. Build. Grow.</p></footer>
+</body>
+</html>
