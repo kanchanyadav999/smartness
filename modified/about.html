@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechVision — About Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; color: #111; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 56px;
+  background: #07091e;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.logo { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.logo-icon {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, #6c47ff, #a78bfa);
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 30% 50%);
+}
+.nav-links { display: flex; gap: 30px; list-style: none; }
+.nav-links a { color: #9999bb; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.nav-links a:hover { color: #fff; }
+.nav-links a.active { color: #fff; border-bottom: 2px solid #7c5cfc; padding-bottom: 2px; }
+.nav-cta {
+  background: #5b3ef5; color: #fff; border: none;
+  padding: 9px 18px; border-radius: 6px; font-size: 0.82rem;
+  font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #4c32d4; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #07091e 0%, #0d1040 50%, #12154a 100%);
+  min-height: 460px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 70px 56px 20px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 75% 40%, rgba(108,71,255,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-breadcrumb { color: #6666aa; font-size: 0.72rem; letter-spacing: 0.05em; margin-bottom: 20px; }
+.hero h1 { font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1.12; margin-bottom: 18px; }
+.hero h1 .purple { color: #8b5cf6; }
+.hero-desc { color: #8888bb; font-size: 0.86rem; line-height: 1.75; max-width: 400px; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 14px; align-items: center; }
+.btn-purple {
+  background: #5b3ef5; color: #fff; border: none;
+  padding: 12px 24px; border-radius: 7px; font-size: 0.84rem;
+  font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif;
+  transition: background 0.2s;
+}
+.btn-purple:hover { background: #4c32d4; }
+.btn-ghost {
+  background: transparent; color: #ddd;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  padding: 12px 24px; border-radius: 7px; font-size: 0.84rem;
+  font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif;
+  display: flex; align-items: center; gap: 6px;
+  transition: border-color 0.2s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+.hero-visual {
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.hero-visual img {
+  width: 100%; max-width: 460px;
+  filter: drop-shadow(0 0 40px rgba(108,71,255,0.4));
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+/* STATS */
+.stats {
+  background: #07091e;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-around; padding: 22px 56px;
+  flex-wrap: wrap; gap: 16px;
+}
+.stat { display: flex; align-items: center; gap: 12px; }
+.stat-ico { font-size: 1.6rem; }
+.stat-num { font-size: 1.25rem; font-weight: 800; color: #fff; line-height: 1; }
+.stat-lbl { font-size: 0.72rem; color: #7777aa; margin-top: 3px; }
+
+/* ABOUT */
+.about {
+  background: #fff; padding: 80px 56px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.about-tag { color: #7c5cfc; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+.about h2 { font-size: 2.1rem; font-weight: 800; color: #0f0f1a; line-height: 1.2; margin-bottom: 18px; }
+.about h2 .blue { color: #3b82f6; }
+.about p { color: #555; font-size: 0.86rem; line-height: 1.8; margin-bottom: 14px; }
+.feat-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.feat-tag {
+  border: 1px solid #dde; border-radius: 6px;
+  padding: 7px 14px; font-size: 0.76rem; color: #444;
+  display: flex; align-items: center; gap: 6px;
+}
+.about-photo {
+  border-radius: 14px; overflow: hidden; height: 400px; position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-badge {
+  position: absolute; bottom: 18px; right: 18px;
+  background: #5b3ef5; color: #fff;
+  padding: 7px 14px; border-radius: 7px; font-size: 0.72rem; font-weight: 700;
+}
+
+/* DOMAINS */
+.domains { background: #f7f8ff; padding: 80px 56px; }
+.sec-hdr { text-align: center; margin-bottom: 52px; }
+.sec-lbl {
+  color: #6c47ff; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.sec-lbl::before { content: '← '; color: #bbb; }
+.sec-lbl::after { content: ' →'; color: #bbb; }
+.dom-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+.dom-card {
+  background: #fff; border: 1px solid #e4e4f0; border-radius: 12px;
+  padding: 26px 18px; text-align: center; transition: all 0.25s;
+}
+.dom-card:hover { box-shadow: 0 8px 30px rgba(108,71,255,0.12); transform: translateY(-4px); border-color: #c4b5fd; }
+.dom-ico { width: 48px; height: 48px; margin: 0 auto 14px; }
+.dom-ico img { width: 100%; }
+.dom-card h3 { font-size: 0.88rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+.dom-card p { font-size: 0.74rem; color: #666; line-height: 1.6; }
+
+/* WHY */
+.why { background: #fff; padding: 80px 56px; }
+.why-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 24px; }
+.why-card { text-align: center; padding: 16px 10px; }
+.why-ico {
+  width: 50px; height: 50px; border-radius: 12px;
+  background: #ede9ff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin: 0 auto 12px;
+}
+.why-card h3 { font-size: 0.8rem; font-weight: 700; color: #111; margin-bottom: 6px; line-height: 1.3; }
+.why-card p { font-size: 0.72rem; color: #666; line-height: 1.5; }
+
+/* WHO */
+.who { background: #f7f8ff; padding: 80px 56px; }
+.who-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; max-width: 960px; margin: 0 auto; }
+.who-card {
+  background: #fff; border: 1px solid #e4e4f0; border-radius: 16px;
+  padding: 32px 24px; text-align: center; position: relative; overflow: hidden;
+}
+.who-top-ico { font-size: 1.3rem; margin-bottom: 10px; color: #6c47ff; }
+.who-photo-wrap {
+  width: 110px; height: 150px; border-radius: 12px; margin: 0 auto 18px;
+  overflow: hidden; background: #f0f0f8;
+}
+.who-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.who-card h3 { font-size: 0.98rem; font-weight: 700; color: #111; margin-bottom: 8px; }
+.who-card p { font-size: 0.76rem; color: #666; line-height: 1.65; }
+
+/* VM + TESTI */
+.vm-row { background: #fff; padding: 80px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.vm-box, .ts-box {
+  border: 1px solid #e4e4f0; border-radius: 16px; padding: 32px; overflow: hidden;
+}
+.box-ttl {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #6c47ff;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 26px;
+}
+.vm-vision h3, .vm-mission h3 { font-size: 0.92rem; font-weight: 700; color: #111; margin-bottom: 6px; }
+.vm-vision p, .vm-mission p { font-size: 0.8rem; color: #555; line-height: 1.7; margin-bottom: 20px; }
+.vm-img { border-radius: 12px; overflow: hidden; margin-top: 8px; height: 160px; }
+.vm-img img { width: 100%; height: 100%; object-fit: cover; }
+.ts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.ts-card { border: 1px solid #ece8ff; border-radius: 10px; padding: 14px; }
+.ts-stars { color: #f59e0b; font-size: 0.75rem; margin-bottom: 8px; }
+.ts-text { font-size: 0.72rem; color: #555; line-height: 1.6; font-style: italic; margin-bottom: 12px; }
+.ts-author { display: flex; align-items: center; gap: 8px; }
+.ts-av {
+  width: 28px; height: 28px; border-radius: 50%; overflow: hidden;
+  background: #ede9ff; flex-shrink: 0;
+}
+.ts-av img { width: 100%; height: 100%; object-fit: cover; }
+.ts-name { font-size: 0.72rem; font-weight: 700; color: #111; }
+.ts-role { font-size: 0.65rem; color: #888; }
+
+/* MENTORS */
+.mentors { background: #f7f8ff; padding: 80px 56px; }
+.mentors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.m-card {
+  background: #fff; border: 1px solid #e4e4f0; border-radius: 16px; padding: 26px;
+  transition: all 0.25s;
+}
+.m-card:hover { box-shadow: 0 8px 30px rgba(108,71,255,0.1); transform: translateY(-3px); }
+.m-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.m-photo { width: 62px; height: 62px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #f0f0f8; }
+.m-photo img { width: 100%; height: 100%; object-fit: cover; }
+.m-name { font-size: 0.92rem; font-weight: 700; color: #111; }
+.m-role { font-size: 0.72rem; color: #7c5cfc; font-weight: 600; margin-top: 2px; }
+.m-line { font-size: 0.74rem; color: #555; margin-bottom: 6px; display: flex; gap: 6px; align-items: flex-start; }
+.m-line strong { color: #111; }
+.m-socials { display: flex; gap: 8px; margin-top: 14px; }
+.m-soc {
+  border: 1px solid #ddd; border-radius: 5px; padding: 5px 10px;
+  font-size: 0.7rem; color: #555; cursor: pointer; background: #fff;
+  display: flex; align-items: center; gap: 4px; font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+.m-soc:hover { border-color: #7c5cfc; color: #7c5cfc; }
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, #07091e 0%, #0d1040 60%, #12154a 100%);
+  padding: 80px 56px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 40px; position: relative; overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(108,71,255,0.2), transparent 70%);
+  pointer-events: none;
+}
+.cta-ready { color: #7777aa; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+.cta h2 { font-size: 2rem; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 12px; }
+.cta h2 span { color: #a78bfa; }
+.cta-sub { color: #8888bb; font-size: 0.84rem; margin-bottom: 26px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.cta-stats { display: flex; gap: 36px; margin-top: 44px; flex-wrap: wrap; }
+.cs-num { font-size: 1.25rem; font-weight: 800; color: #fff; }
+.cs-lbl { font-size: 0.68rem; color: #6666aa; margin-top: 3px; }
+.cta-visual {
+  display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
+}
+.cta-visual img {
+  max-width: 320px; width: 100%;
+  filter: drop-shadow(0 0 50px rgba(108,71,255,0.5));
+  animation: float 5s ease-in-out infinite;
+}
+
+/* MODAL */
+.modal-bg {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75); z-index: 999; backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+}
+.modal-bg.open { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 18px; padding: 44px;
+  max-width: 460px; width: 90%; position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+}
+.modal-x {
+  position: absolute; top: 18px; right: 20px;
+  background: none; border: none; font-size: 1.3rem;
+  cursor: pointer; color: #999; font-family: 'Inter', sans-serif;
+}
+.modal-box h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #111; }
+.modal-box > p { color: #666; font-size: 0.86rem; margin-bottom: 26px; line-height: 1.6; }
+.modal-inner {
+  background: #f8f5ff; border: 1px solid #e0d8ff;
+  border-radius: 12px; padding: 26px; text-align: center;
+}
+.modal-inner p { color: #555; font-size: 0.84rem; margin-bottom: 18px; line-height: 1.6; }
+.form-btn {
+  display: inline-block; background: #5b3ef5; color: #fff;
+  padding: 13px 30px; border-radius: 8px; text-decoration: none;
+  font-weight: 700; font-size: 0.9rem; transition: background 0.2s;
+}
+.form-btn:hover { background: #4c32d4; }
+.form-note { font-size: 0.7rem; color: #aaa; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">
+    <div class="logo-icon"></div>
+    Tech Vision
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roadmap.html">Roadmaps</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="placement.html">Placement</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="pricing.html" onclick="navClick(this)">Pricing</a></li>
+    <li><a href="success-stories.html">Success Stories</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openModal()">Book Free Counseling</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-breadcrumb">ABOUT US →</div>
+    <h1>Build Your Career<br><span class="purple">in Cloud, Data & AI</span></h1>
+    <p class="hero-desc">Tech Vision empowers learners with in-demand tech skills through practical learning, real-world projects and expert mentorship to help them build successful careers.</p>
+    <div class="hero-btns">
+      <button class="btn-purple" onclick="window.location.href='roadmap.html'">Explore Courses</button>
+      <button class="btn-ghost" onclick="openModal()">Book Free Counseling →</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <!-- Cloud/Tech isometric illustration via SVG -->
+    <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" style="max-width:460px;width:100%">
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#6c47ff" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#6c47ff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="cloud1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#a78bfa"/>
+          <stop offset="100%" stop-color="#7c3aed"/>
+        </linearGradient>
+        <linearGradient id="box1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6c47ff"/>
+          <stop offset="100%" stop-color="#4c1d95"/>
+        </linearGradient>
+        <linearGradient id="box2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#22d3ee"/>
+          <stop offset="100%" stop-color="#0e7490"/>
+        </linearGradient>
+        <linearGradient id="box3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f472b6"/>
+          <stop offset="100%" stop-color="#be185d"/>
+        </linearGradient>
+      </defs>
+      <!-- glow bg -->
+      <ellipse cx="230" cy="170" rx="200" ry="150" fill="url(#glow)"/>
+      <!-- floating platforms -->
+      <!-- bottom platform -->
+      <polygon points="130,260 230,300 330,260 230,220" fill="#1e1b4b" opacity="0.9"/>
+      <polygon points="130,260 130,270 230,310 230,300" fill="#12103a"/>
+      <polygon points="330,260 330,270 230,310 230,300" fill="#1a1750"/>
+      <!-- middle platform -->
+      <polygon points="155,185 230,215 305,185 230,155" fill="#2d2a6e" opacity="0.9"/>
+      <polygon points="155,185 155,195 230,225 230,215" fill="#201e55"/>
+      <polygon points="305,185 305,195 230,225 230,215" fill="#252268"/>
+      <!-- top cloud shape -->
+      <ellipse cx="230" cy="95" rx="70" ry="35" fill="url(#cloud1)" opacity="0.95"/>
+      <ellipse cx="195" cy="108" rx="45" ry="28" fill="url(#cloud1)" opacity="0.95"/>
+      <ellipse cx="265" cy="108" rx="45" ry="28" fill="url(#cloud1)" opacity="0.95"/>
+      <rect x="215" y="105" width="30" height="15" fill="url(#cloud1)" opacity="0.95"/>
+      <!-- cloud bottom flat -->
+      <rect x="170" y="118" width="120" height="8" rx="4" fill="#7c3aed" opacity="0.8"/>
+      <!-- isometric boxes on bottom platform -->
+      <!-- box left -->
+      <polygon points="170,248 200,262 200,242 170,228" fill="url(#box1)"/>
+      <polygon points="200,262 230,248 230,228 200,242" fill="#5535cc"/>
+      <polygon points="170,228 200,214 230,228 200,242" fill="#8b6fff"/>
+      <!-- box right -->
+      <polygon points="230,248 260,262 260,242 230,228" fill="url(#box2)"/>
+      <polygon points="260,262 290,248 290,228 260,242" fill="#0891b2"/>
+      <polygon points="230,228 260,214 290,228 260,242" fill="#38bdf8"/>
+      <!-- small box on mid platform -->
+      <polygon points="210,175 230,183 230,165 210,157" fill="url(#box3)"/>
+      <polygon points="230,183 250,175 250,157 230,165" fill="#9d174d"/>
+      <polygon points="210,157 230,149 250,157 230,165" fill="#f9a8d4"/>
+      <!-- data bars floating right -->
+      <rect x="330" y="160" width="12" height="50" rx="3" fill="#6c47ff" opacity="0.8"/>
+      <rect x="348" y="175" width="12" height="35" rx="3" fill="#a78bfa" opacity="0.8"/>
+      <rect x="366" y="150" width="12" height="60" rx="3" fill="#22d3ee" opacity="0.8"/>
+      <rect x="384" y="168" width="12" height="42" rx="3" fill="#6c47ff" opacity="0.6"/>
+      <!-- connecting lines -->
+      <line x1="230" y1="118" x2="230" y2="155" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
+      <line x1="230" y1="215" x2="230" y2="220" stroke="#6c47ff" stroke-width="1.5" opacity="0.5"/>
+      <!-- orbiting dots -->
+      <circle cx="150" cy="90" r="4" fill="#22d3ee" opacity="0.9"/>
+      <circle cx="315" cy="75" r="5" fill="#f472b6" opacity="0.9"/>
+      <circle cx="340" cy="130" r="3" fill="#a78bfa" opacity="0.8"/>
+      <circle cx="120" cy="200" r="4" fill="#6c47ff" opacity="0.7"/>
+      <!-- small floating chips -->
+      <rect x="100" y="150" width="30" height="18" rx="4" fill="#1e1b4b" stroke="#6c47ff" stroke-width="1" opacity="0.8"/>
+      <text x="115" y="163" font-size="8" fill="#a78bfa" text-anchor="middle">AI</text>
+      <rect x="340" y="220" width="38" height="18" rx="4" fill="#1e1b4b" stroke="#22d3ee" stroke-width="1" opacity="0.8"/>
+      <text x="359" y="233" font-size="7" fill="#22d3ee" text-anchor="middle">Cloud</text>
+    </svg>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-ico">🤖</div><div><div class="stat-num">50K+</div><div class="stat-lbl">Learners Trained</div></div></div>
+  <div class="stat"><div class="stat-ico">👥</div><div><div class="stat-num">50+</div><div class="stat-lbl">Real Industry Projects</div></div></div>
+  <div class="stat"><div class="stat-ico">🏆</div><div><div class="stat-num">20+</div><div class="stat-lbl">Expert Mentors</div></div></div>
+  <div class="stat"><div class="stat-ico">😊</div><div><div class="stat-num">95%</div><div class="stat-lbl">Learner Satisfaction</div></div></div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <div>
+    <div class="about-tag">ABOUT TECH VISION →</div>
+    <h2>We Don't Just Teach,<br>We <span class="blue">Transform Careers</span></h2>
+    <p>Tech Vision is an industry-focused IT training institute that believes in practical learning over theory. Our courses are crafted by industry experts and designed for students, freshers, working professionals and career switchers.</p>
+    <p>From beginner to advanced level, we provide structured learning paths, real-world projects, mentorship and career support to help you land the right opportunity.</p>
+    <div class="feat-tags">
+      <div class="feat-tag">🤝 Hands-on Learning</div>
+      <div class="feat-tag">🌍 Real World Projects</div>
+      <div class="feat-tag">👨‍🏫 Expert Mentorship</div>
+      <div class="feat-tag">📈 Career Growth Support</div>
+    </div>
+  </div>
+  <div class="about-photo">
+    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=700&q=80" alt="Tech classroom" loading="lazy"/>
+    <div class="about-badge">Tech Vision</div>
+  </div>
+</div>
+
+<!-- DOMAINS -->
+<div class="domains">
+  <div class="sec-hdr"><div class="sec-lbl">DOMAINS WE TEACH</div></div>
+  <div class="dom-grid">
+    <div class="dom-card">
+      <div class="dom-ico">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="8" width="36" height="8" rx="3" fill="#e0d9ff" stroke="#7c5cfc" stroke-width="1.5"/>
+          <rect x="6" y="20" width="36" height="8" rx="3" fill="#e0d9ff" stroke="#7c5cfc" stroke-width="1.5"/>
+          <rect x="6" y="32" width="36" height="8" rx="3" fill="#e0d9ff" stroke="#7c5cfc" stroke-width="1.5"/>
+          <circle cx="38" cy="12" r="2" fill="#7c5cfc"/>
+          <circle cx="38" cy="24" r="2" fill="#7c5cfc"/>
+          <circle cx="38" cy="36" r="2" fill="#22d3ee"/>
+        </svg>
+      </div>
+      <h3>Data Engineering</h3>
+      <p>Build scalable data pipelines, work with big data technologies and engineering best practices.</p>
+    </div>
+    <div class="dom-card">
+      <div class="dom-ico">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="30" width="8" height="12" rx="2" fill="#7c5cfc"/>
+          <rect x="17" y="20" width="8" height="22" rx="2" fill="#a78bfa"/>
+          <rect x="28" y="24" width="8" height="18" rx="2" fill="#6c47ff"/>
+          <rect x="39" y="14" width="8" height="28" rx="2" fill="#22d3ee"/>
+          <polyline points="10,28 21,18 32,22 43,12" stroke="#f472b6" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Data Analytics</h3>
+      <p>Turn raw data into meaningful insights using analytics tools, SQL, visualization and dashboards.</p>
+    </div>
+    <div class="dom-card">
+      <div class="dom-ico">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="14" stroke="#7c5cfc" stroke-width="2" fill="#ede9ff"/>
+          <circle cx="24" cy="24" r="6" fill="#7c5cfc"/>
+          <line x1="24" y1="6" x2="24" y2="14" stroke="#7c5cfc" stroke-width="2"/>
+          <line x1="24" y1="34" x2="24" y2="42" stroke="#7c5cfc" stroke-width="2"/>
+          <line x1="6" y1="24" x2="14" y2="24" stroke="#7c5cfc" stroke-width="2"/>
+          <line x1="34" y1="24" x2="42" y2="24" stroke="#7c5cfc" stroke-width="2"/>
+          <line x1="10" y1="10" x2="16" y2="16" stroke="#a78bfa" stroke-width="1.5"/>
+          <line x1="32" y1="32" x2="38" y2="38" stroke="#a78bfa" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3>Data Science</h3>
+      <p>Explore data, build models and solve real-world problems using statistics and machine learning.</p>
+    </div>
+    <div class="dom-card">
+      <div class="dom-ico">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="24" cy="24" rx="18" ry="10" stroke="#7c5cfc" stroke-width="2" fill="#ede9ff"/>
+          <ellipse cx="24" cy="24" rx="10" ry="18" stroke="#a78bfa" stroke-width="1.5" fill="none"/>
+          <circle cx="24" cy="24" r="4" fill="#7c5cfc"/>
+          <line x1="6" y1="24" x2="42" y2="24" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,2"/>
+          <line x1="24" y1="6" x2="24" y2="42" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,2"/>
+        </svg>
+      </div>
+      <h3>Machine Learning</h3>
+      <p>Learn ML algorithms, train models and build intelligent applications for real-world use.</p>
+    </div>
+    <div class="dom-card">
+      <div class="dom-ico">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 8 L40 16 L40 32 L24 40 L8 32 L8 16 Z" stroke="#7c5cfc" stroke-width="2" fill="#ede9ff"/>
+          <path d="M24 14 L34 20 L34 30 L24 36 L14 30 L14 20 Z" fill="#7c5cfc" opacity="0.3"/>
+          <path d="M20 24 C20 21.8 21.8 20 24 20 C26.2 20 28 21.8 28 24 C28 26.2 26.2 28 24 28" stroke="#7c5cfc" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2" fill="#7c5cfc"/>
+        </svg>
+      </div>
+      <h3>DevOps</h3>
+      <p>Automate, deploy and manage applications using CI/CD, cloud and modern DevOps practices.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<div class="why">
+  <div class="sec-hdr"><div class="sec-lbl">WHY CHOOSE TECH VISION?</div></div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-ico">🛠️</div><h3>Hands-On Projects</h3><p>Work on 50+ real industry projects across levels.</p></div>
+    <div class="why-card"><div class="why-ico">📚</div><h3>Industry-Oriented Curriculum</h3><p>Designed by experts as per industry requirements.</p></div>
+    <div class="why-card"><div class="why-ico">📅</div><h3>Flexible Batches</h3><p>Weekday & weekend batches for students & working professionals.</p></div>
+    <div class="why-card"><div class="why-ico">🎯</div><h3>Career Guidance</h3><p>Personalized guidance for resumes, LinkedIn & job opportunities.</p></div>
+    <div class="why-card"><div class="why-ico">💼</div><h3>Interview Preparation</h3><p>Resume building, mock interviews & technical round preparation.</p></div>
+    <div class="why-card"><div class="why-ico">🚀</div><h3>Beginner to Advanced</h3><p>Structured learning path for every level of learner.</p></div>
+  </div>
+</div>
+
+<!-- WHO WE HELP -->
+<div class="who">
+  <div class="sec-hdr"><div class="sec-lbl">WHO WE HELP</div></div>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-top-ico">🎓</div>
+      <div class="who-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=300&q=80" alt="Student"/>
+      </div>
+      <h3>Students</h3>
+      <p>Build strong foundations, work on real projects and get placement ready.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-top-ico">💼</div>
+      <div class="who-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80" alt="Professional"/>
+      </div>
+      <h3>Working Professionals</h3>
+      <p>Upskill, stay relevant and grow in your current career.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-top-ico">🔄</div>
+      <div class="who-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&q=80" alt="Career switcher"/>
+      </div>
+      <h3>Career Switchers</h3>
+      <p>Move into high-demand tech roles with the right skills and support.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VISION + TESTIMONIALS -->
+<div class="vm-row">
+  <div class="vm-box">
+    <div class="box-ttl">▶ VISION & MISSION</div>
+    <div class="vm-vision">
+      <h3>Vision</h3>
+      <p>Empower learners with practical cloud and data skills for real-world careers.</p>
+    </div>
+    <div class="vm-mission">
+      <h3>Mission</h3>
+      <p>Deliver affordable, practical, and industry-focused IT training.</p>
+    </div>
+    <div class="vm-img">
+      <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80" alt="Vision"/>
+    </div>
+  </div>
+  <div class="ts-box">
+    <div class="box-ttl">⭐ STUDENT SUCCESS STORIES</div>
+    <div class="ts-grid">
+      <div class="ts-card">
+        <div class="ts-stars">★★★★★</div>
+        <div class="ts-text">"Tech Vision changed my journey. The projects and mentorship helped me land my dream role as Data Analyst."</div>
+        <div class="ts-author">
+          <div class="ts-av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&q=80" alt="Riya"/></div>
+          <div><div class="ts-name">Riya Sharma</div><div class="ts-role">Data Analyst</div></div>
+        </div>
+      </div>
+      <div class="ts-card">
+        <div class="ts-stars">★★★★★</div>
+        <div class="ts-text">"The curriculum is very practical and industry oriented. I got placed as a Data Scientist in a top product company."</div>
+        <div class="ts-author">
+          <div class="ts-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&q=80" alt="Arjun"/></div>
+          <div><div class="ts-name">Arjun Mehta</div><div class="ts-role">Data Scientist</div></div>
+        </div>
+      </div>
+      <div class="ts-card">
+        <div class="ts-stars">★★★★★</div>
+        <div class="ts-text">"As a non-tech background, Tech Vision made my transition to DevOps smooth and successful."</div>
+        <div class="ts-author">
+          <div class="ts-av"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&q=80" alt="Karan"/></div>
+          <div><div class="ts-name">Karan Verma</div><div class="ts-role">DevOps Engineer</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENTORS -->
+<div class="mentors">
+  <div class="sec-hdr"><div class="sec-lbl">MEET OUR MENTORS</div></div>
+  <div class="mentors-grid">
+    <div class="m-card">
+      <div class="m-top">
+        <div class="m-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" alt="Om Gupta"/></div>
+        <div><div class="m-name">Om Gupta</div><div class="m-role">DevOps Engineer @ Jio</div></div>
+      </div>
+      <div class="m-line">⚡ <div><strong>Expertise:</strong> CI/CD, Docker, Kubernetes, AWS</div></div>
+      <div class="m-line">📅 <div><strong>Experience:</strong> 4+ Years</div></div>
+      <div class="m-socials">
+        <button class="m-soc">in LinkedIn</button>
+        <button class="m-soc">⌥ GitHub</button>
+      </div>
+    </div>
+    <div class="m-card">
+      <div class="m-top">
+        <div class="m-photo"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&q=80" alt="Ankur"/></div>
+        <div><div class="m-name">Ankur Vishwakarma</div><div class="m-role">Data Scientist @ IIT Bombay</div></div>
+      </div>
+      <div class="m-line">⚡ <div><strong>Expertise:</strong> Python, Machine Learning, NLP, Deep Learning</div></div>
+      <div class="m-line">📅 <div><strong>Experience:</strong> 5+ Years</div></div>
+      <div class="m-socials">
+        <button class="m-soc">in LinkedIn</button>
+        <button class="m-soc">⌥ GitHub</button>
+      </div>
+    </div>
+    <div class="m-card">
+      <div class="m-top">
+        <div class="m-photo"><img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=120&q=80" alt="Pullar"/></div>
+        <div><div class="m-name">Pullar Bhiya</div><div class="m-role">Data Scientist</div></div>
+      </div>
+      <div class="m-line">⚡ <div><strong>Expertise:</strong> Python, ML, Data Science, Analytics</div></div>
+      <div class="m-line">📅 <div><strong>Experience:</strong> 4+ Years</div></div>
+      <div class="m-socials">
+        <button class="m-soc">in LinkedIn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div>
+    <div class="cta-ready">READY TO BUILD YOUR FUTURE?</div>
+    <h2>Start Your <span>Tech Journey</span> Today</h2>
+    <p class="cta-sub">Get expert guidance, hands-on training and job-ready skills.</p>
+    <div class="cta-btns">
+      <button class="btn-purple" onclick="openModal()">Join Demo Session</button>
+      <button class="btn-ghost" onclick="window.location.href='roadmap.html'">Explore Courses</button>
+    </div>
+    <div class="cta-stats">
+      <div><div class="cs-num">50K+</div><div class="cs-lbl">Learners Trained</div></div>
+      <div><div class="cs-num">50+</div><div class="cs-lbl">Real Industry Projects</div></div>
+      <div><div class="cs-num">100+</div><div class="cs-lbl">Hiring Partners</div></div>
+      <div><div class="cs-num">95%</div><div class="cs-lbl">Success Rate</div></div>
+    </div>
+  </div>
+  <div class="cta-visual">
+    <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;width:100%">
+      <defs>
+        <radialGradient id="rktglow" cx="50%" cy="80%" r="50%">
+          <stop offset="0%" stop-color="#6c47ff" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#6c47ff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="150" cy="230" rx="80" ry="30" fill="url(#rktglow)"/>
+      <!-- rocket body -->
+      <ellipse cx="150" cy="130" rx="28" ry="55" fill="#a78bfa"/>
+      <polygon points="122,95 150,30 178,95" fill="#7c3aed"/>
+      <!-- window -->
+      <circle cx="150" cy="125" r="12" fill="#22d3ee" opacity="0.9"/>
+      <circle cx="150" cy="125" r="8" fill="#67e8f9"/>
+      <!-- fins -->
+      <polygon points="122,160 100,185 122,175" fill="#6c47ff"/>
+      <polygon points="178,160 200,185 178,175" fill="#6c47ff"/>
+      <!-- flame -->
+      <ellipse cx="150" cy="195" rx="14" ry="20" fill="#f59e0b" opacity="0.9"/>
+      <ellipse cx="150" cy="200" rx="8" ry="14" fill="#fde68a"/>
+      <!-- stars -->
+      <circle cx="60" cy="60" r="2" fill="#fff" opacity="0.8"/>
+      <circle cx="240" cy="40" r="2.5" fill="#a78bfa" opacity="0.9"/>
+      <circle cx="30" cy="160" r="1.5" fill="#22d3ee" opacity="0.7"/>
+      <circle cx="270" cy="150" r="2" fill="#f472b6" opacity="0.8"/>
+      <circle cx="80" cy="220" r="1.5" fill="#fff" opacity="0.5"/>
+      <circle cx="220" cy="210" r="2" fill="#a78bfa" opacity="0.6"/>
+    </svg>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" onclick="handleBg(event)">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <h2>Book Your Free Demo 🚀</h2>
+    <p>Fill the form and our counselor will reach out within 24 hours. You'll get a confirmation email automatically!</p>
+    <div class="modal-inner">
+      <p>Click below to open the booking form. After submitting, your data saves to our sheet and you get a confirmation email!</p>
+      <!-- REPLACE WITH YOUR GOOGLE FORM LINK -->
+      <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="form-btn">Open Booking Form →</a>
+      <div class="form-note">🔒 No spam. Your info is safe with us.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() { document.getElementById('modalBg').classList.add('open'); }
+function closeModal() { document.getElementById('modalBg').classList.remove('open'); }
+function handleBg(e) { if (e.target === document.getElementById('modalBg')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
